@@ -36,8 +36,20 @@ public class APP {
          Math.sqrt(desviacion/lista.getNumeroElementos()-1);
          return desviacion;
      }
+     public void leer(String file){
+         lista.leer(file);
+     }
+
+    public Lista getLista() {
+        return lista;
+    }
+     
      public static void main( String[] args )
     {
-        
+        APP app=new APP();
+        String prub;
+        prub ="C:\\Users\\2112107\\Documents\\prue.txt";
+        app.leer(prub);
+        System.out.println(app.getLista());
     }
 }
