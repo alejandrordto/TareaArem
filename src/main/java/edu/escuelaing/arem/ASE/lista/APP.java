@@ -6,8 +6,8 @@
 package edu.escuelaing.arem.ASE.lista;
 
 /**
- *
- * @author AsusPC
+ *clase que imdica la applicacion.
+ * @author Alejandro Rodriguez
  */
 public class APP {
      private Lista lista;
@@ -16,15 +16,24 @@ public class APP {
          lista= new Lista();
          media=0;
      }
+     /**
+      * funcion para calcular la media de un conjunto de datos
+      * @return entrega la media de la lista dada 
+      */
      public double getMedia(){
          Nodo x=lista.getHead();
-         media+=x.getValor();
          while (x.getSiguiente()!=null){
              media+=x.getValor();
              x=x.getSiguiente();
          }
-         return media/lista.getNumeroElementos();
+         media+=x.getValor();
+         media=media/lista.getNumeroElementos();
+         return media;
      }
+     /**
+      * funcion que calcula la desviacion estandar de la lista
+      * @return da la desviacion estandar de la lista 
+      */
      public double getDesviacion(){
          double desviacion=0;
          int base=2;
@@ -33,11 +42,18 @@ public class APP {
              desviacion+=(double) Math.pow(x.getValor()-media,base);
              x=x.getSiguiente();
          }
-         Math.sqrt(desviacion/lista.getNumeroElementos()-1);
+         desviacion+=(double) Math.pow(x.getValor()-media,base);
+         desviacion=Math.sqrt(desviacion/(lista.getNumeroElementos()-1));
          return desviacion;
      }
+     /**
+      * funcion usada para leer el fichero dado y obtener la lista
+      * @param file direccion del archivo .txt que se leera
+      */
      public void leer(String file){
          lista.leer(file);
+         System.out.println("Media: " +getMedia());
+         System.out.println("Desviacion estandar: 0"+getDesviacion());
      }
 
     public Lista getLista() {
@@ -48,8 +64,7 @@ public class APP {
     {
         APP app=new APP();
         String prub;
-        prub ="C:\\Users\\2112107\\Documents\\prue.txt";
+        prub="test1.txt";
         app.leer(prub);
-        System.out.println(app.getLista());
     }
 }

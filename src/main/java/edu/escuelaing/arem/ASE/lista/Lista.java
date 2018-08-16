@@ -3,8 +3,9 @@ package edu.escuelaing.arem.ASE.lista;
 import java.io.*;
 
 /**
- *
- * @author AsusPC
+ *clase que representa una lista
+ * 
+ * @author Alejandro rodriguez
  */
 public class Lista {
     private Nodo head;
@@ -16,6 +17,10 @@ public class Lista {
         head=null;
         numeroElementos=0;
     }
+    /**
+    * Añade un elemento a la lista
+    *@param numero representa el valor que se va agregar en la lista(un numero en este caso)
+    */
     public void add(double numero){
         numeroElementos++;
         if (head==null){
@@ -27,14 +32,24 @@ public class Lista {
             tail=Temp;
         }
     }
-
+    /**
+     * funcion que regresa el primer elemnto agregado
+     * @return devuelve el primer elemento de la lista 
+     */
     public Nodo getHead() {
         return head;
     }
-    
+    /**
+     * indica la cantidad de elementos en la lista
+     * @return cantidad de elementos en la lista
+     */
     public int getNumeroElementos() {
         return numeroElementos;
     }
+    /**
+     * lee el archivo y mete los elementos de este en la lista, cada numero esta en una linea diferente
+     * @param file direccion del arciovo a leer
+     */
     public void leer(String file){
         try{
             BufferedReader bf = new BufferedReader(new FileReader(file));
@@ -50,7 +65,7 @@ public class Lista {
     @Override
     public String toString() {
          Nodo temp=head;
-         while (head.getSiguiente()!= null){
+         while (temp.getSiguiente()!= null){
             txt=txt+temp.getValor();
             temp=temp.getSiguiente();
          }
